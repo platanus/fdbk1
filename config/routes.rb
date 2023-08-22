@@ -12,5 +12,8 @@ Rails.application.routes.draw do
       resources :feedback_sessions, only: [:index]
     end
   end
+  namespace :app do
+    resources :feedback_sessions, only: [:new]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

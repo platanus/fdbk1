@@ -8,6 +8,7 @@ import BaseCheckbox from './components/base-checkbox.vue';
 import BaseTitle from './components/base-title.vue';
 import UserSession from './components/user-session.vue';
 import FeedbackSessions from './components/feedback-sessions.vue';
+import FeedbackSessionsNew from './components/feedback-sessions-new.vue';
 import './css/application.css';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       TheHeader,
       UserSession,
       FeedbackSessions,
+      FeedbackSessionsNew,
     },
   });
 
