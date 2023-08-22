@@ -1,6 +1,8 @@
 class Tag < ApplicationRecord
   has_many :session_tags, dependent: :destroy
   has_many :feedback_sessions, through: :session_tags
+
+  validates :name, presence: true
 end
 
 # == Schema Information
