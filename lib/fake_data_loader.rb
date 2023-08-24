@@ -33,6 +33,7 @@ module FakeDataLoader
     load_admin
     load_users
     load_sessions
+    load_session_commments
   end
 
   def self.load_admin
@@ -62,6 +63,18 @@ module FakeDataLoader
           :feedback_session,
           provider: user,
           receiver: User.where.not(id: user.id).sample
+        )
+      end
+    end
+  end
+
+  def self.load_session_commments
+    FeedbackSession.all.each do |session|
+      rand(2..4).times do
+        create(
+          :session_comment,
+          feedback_session: session,
+          body: Faker::Lorem.paragraph
         )
       end
     end
