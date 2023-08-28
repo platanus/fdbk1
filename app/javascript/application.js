@@ -3,6 +3,7 @@ import InlineSvg from 'vue-inline-svg';
 
 import TheHeader from './components/the-header.vue';
 import BaseInput from './components/base-input.vue';
+import BaseSelect from './components/base-select.vue';
 import BaseButton from './components/base-button.vue';
 import BackButton from './components/back-button.vue';
 import BaseCheckbox from './components/base-checkbox.vue';
@@ -23,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   app.component('InlineSvg', InlineSvg);
-
   app.component('BaseInput', BaseInput);
+  app.component('BaseSelect', BaseSelect);
   app.component('BaseButton', BaseButton);
   app.component('BackButton', BackButton);
   app.component('BaseCheckbox', BaseCheckbox);
