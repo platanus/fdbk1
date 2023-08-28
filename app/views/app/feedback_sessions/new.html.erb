@@ -5,6 +5,8 @@
     <base-title class="my-6">
       Crear Sesión
     </base-title>
-    <feedback-sessions-new></feedback-sessions-new>
+    <feedback-sessions-new
+      :users="<%= serialize_resource(@users) %>"
+      ></feedback-sessions-new>
   </div>
 </div>

@@ -11,6 +11,15 @@ class Api::Internal::FeedbackSessionsController < Api::Internal::BaseController
     respond_with sessions.includes(:provider, :receiver)
   end
 
+  def create
+    respond_with FeedbackSession.create!(
+      receiver: current_user,
+      provider_id: params[:provider_user_id],
+      session_date: params[:feedback_session_date],
+      tag_names: params[:tag_names]
+    )
+  end
+
   private
 
   def filtered_sessions

@@ -1,6 +1,6 @@
 import { createApp } from 'vue';
 import InlineSvg from 'vue-inline-svg';
-
+import { VueQueryPlugin } from '@tanstack/vue-query';
 import TheHeader from './components/the-header.vue';
 import BaseInput from './components/base-input.vue';
 import BaseSelect from './components/base-select.vue';
@@ -13,6 +13,7 @@ import FeedbackSessions from './components/feedback-sessions.vue';
 import FeedbackSessionsNew from './components/feedback-sessions-new.vue';
 import './css/application.css';
 
+// eslint-disable-next-line max-statements
 document.addEventListener('DOMContentLoaded', () => {
   const app = createApp({
     components: {
@@ -30,6 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
   app.component('BackButton', BackButton);
   app.component('BaseCheckbox', BaseCheckbox);
   app.component('BaseTitle', BaseTitle);
+
+  app.use(VueQueryPlugin);
+
   app.mount('#vue-app');
 
   return app;
