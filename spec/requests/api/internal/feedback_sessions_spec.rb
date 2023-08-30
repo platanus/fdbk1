@@ -45,4 +45,47 @@ RSpec.describe 'Api::Internal::FeedbackSessionsControllers', type: :request do
       it { expect(response.status).to eq(401) }
     end
   end
+
+  describe 'POST /create' do
+    let(:provider_user) { create(:user) }
+    let(:feedback_session_date) { Time.zone.now.strftime("%Y-%m-%d") }
+    let(:tag_names) { ['Tag_1', 'Tag_2'] }
+    let(:params) do
+      {
+        provider_user_id: provider_user.id,
+        feedback_session_date: feedback_session_date,
+        tag_names: tag_names
+      }
+    end
+
+    def perform
+      post '/api/internal/feedback_sessions', params: params
+    end
+
+    context 'with authorized user' do
+      before do
+        sign_in(user)
+      end
+
+      it 'creates a new feedback session' do
+        expect { perform }.to change { FeedbackSession.count }.by(1)
+      end
+
+      it 'returns a created response' do
+        perform
+        expect(response.status).to eq(201)
+      end
+    end
+
+    context 'with unauthenticated user' do
+      it 'does not create a new feedback session' do
+        expect { perform }.not_to (change { FeedbackSession.count })
+      end
+
+      it 'returns an unauthorized response' do
+        perform
+        expect(response.status).to eq(401)
+      end
+    end
+  end
 end
