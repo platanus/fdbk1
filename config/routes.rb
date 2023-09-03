@@ -7,9 +7,17 @@ Rails.application.routes.draw do
   mount CoverImageUploader.derivation_endpoint => "/derivations/cover_image"
   mount Sidekiq::Web => '/queue'
 
+  namespace :app do
+    resources :feedback_sessions, only: [:index] do
+      resources :session_comments, only: [:index, :new]
+    end
+  end
+
   namespace :api, defaults: { format: :json } do
     namespace :internal do
-      resources :feedback_sessions, only: [:index, :create]
+      resources :feedback_sessions, only: [:index, :create] do
+        resources :session_comments, only: [:create]
+      end
       resources :users, only: [:index]
     end
   end
