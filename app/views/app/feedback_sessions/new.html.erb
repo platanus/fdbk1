@@ -1,0 +1,12 @@
+<div class="flex justify-center">
+  <div class="w-8/12">
+    <back-button link-to="/">
+    </back-button>
+    <base-title class="my-6">
+      Crear Sesión
+    </base-title>
+    <feedback-sessions-new
+      :users="<%= serialize_resource(@users) %>"
+      ></feedback-sessions-new>
+  </div>
+</div>

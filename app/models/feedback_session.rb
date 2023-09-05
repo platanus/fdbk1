@@ -9,6 +9,12 @@ class FeedbackSession < ApplicationRecord
   scope :for_user, ->(user) { where(provider: user).or(where(receiver: user)) }
 
   validates :session_date, presence: true
+
+  def tag_names=(tag_names)
+    self.tags = tag_names.map do |name|
+      Tag.find_or_create_by!(name: name)
+    end
+  end
 end
 
 # == Schema Information

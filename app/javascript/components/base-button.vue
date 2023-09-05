@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, useAttrs } from 'vue';
+
 const props = withDefaults(
   defineProps<{
     variant?: string
@@ -7,6 +9,8 @@ const props = withDefaults(
     variant: 'primary',
   },
 );
+const attrs = useAttrs();
+const currentTag = computed(() => (attrs.href ? 'a' : 'button'));
 
 const variants = {
   primary: 'bg-indigo-600 text-white hover:bg-indigo-700',
@@ -18,10 +22,11 @@ const variants = {
 </script>
 
 <template>
-  <button
+  <component
+    :is="currentTag"
     class="rounded px-3 py-2 text-sm font-semibold"
     :class="variants[props.variant as keyof typeof variants]"
   >
     <slot />
-  </button>
+  </component>
 </template>

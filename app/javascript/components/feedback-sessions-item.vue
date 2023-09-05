@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { FeedbackSession } from 'api/feedback-sessions';
+import tagClass from '../utils/tag-class';
 
 interface Props {
   type: 'provider' | 'receiver';
@@ -15,6 +16,15 @@ const props = defineProps<Props>();
       {{ type === 'provider' ? props.session.receiver.name : props.session.provider.name }}
     </span>
     <span class="text-sm text-slate-500">{{ props.session.sessionDate }}</span>
+    <div class="flex space-x-4">
+      <span
+        v-for="tag in session.tags"
+        :key="tag.id"
+        :class="tagClass(tag.name)"
+      >
+        {{ tag.name }}
+      </span>
+    </div>
     <button class="ml-auto flex h-6 w-6 items-center justify-center rounded-full bg-slate-100">
       <inline-svg
         :src="require('images/icons/dots-vertical.svg')"
