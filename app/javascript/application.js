@@ -11,7 +11,7 @@ import BaseTitle from './components/base-title.vue';
 import UserSession from './components/user-session.vue';
 import FeedbackSessions from './components/feedback-sessions.vue';
 import FeedbackSessionsNew from './components/feedback-sessions-new.vue';
-import FeedbackSession from './components/feedback-session.vue';
+import SessionComments from './components/session-comments.vue';
 import SessionComment from './components/session-comment.vue';
 import './css/application.css';
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       UserSession,
       FeedbackSessions,
       FeedbackSessionsNew,
-      FeedbackSession,
+      SessionComments,
       SessionComment,
     },
   });
