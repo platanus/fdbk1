@@ -14,6 +14,7 @@ const props = defineProps<Props>();
 const formError = ref('');
 const loading = ref(false);
 const session = ref(props.initialSession);
+const backUrl = `/app/feedback_sessions/${session.value.id}/session_comments`;
 
 async function submitForm(comment: Omit<SessionComment, 'id'>) {
   try {
@@ -31,6 +32,9 @@ async function submitForm(comment: Omit<SessionComment, 'id'>) {
 </script>
 
 <template>
+  <back-button
+    :link-to="backUrl"
+  />
   <div class="flex flex-col justify-center ">
     <template v-if="session">
       <div class="inline-flex flex-col items-start gap-4 md:gap-7">
